@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  view-config:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-02-11T18:32:39.956672736+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 51b1333bd4bdbc9acc1915dcb5f92bd1506b559467d0a0591078ab809b2246e0
+    name: view-config
+    type: application
+    urls:
+    - https://github.com/cypik-view/view-config-helm-chart.git/charts/view-config-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-02-11T18:32:39.952650333+05:30"
