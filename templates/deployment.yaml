@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: view-config
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: view-config
+  template:
+    metadata:
+      labels:
+        app: view-config
+    spec:
+      containers:
+        - name: view-config
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 8601
+          env:
+            {{- range $key, $value := .Values.env }}
+            - name: {{ $key }}
+              value: "{{ $value }}"
+            {{- end }}
+          volumeMounts:
+            - name: config-volume
+              mountPath: /app/config/view.json
+              subPath: view.json
+            - name: shared-storage
+              mountPath: /app/assets
+            - name: shared-storage
+              mountPath: /app/blobs
+            - name: shared-storage
+              mountPath: /app/logs
+            - name: shared-storage
+              mountPath: /app/webhookreq
+            - name: shared-storage
+              mountPath: /app/webhookresp
+            - name: shared-storage
+              mountPath: /app/controllog
+            - name: shared-storage
+              mountPath: /app/controlapi
+            - name: shared-storage
+              mountPath: /app/controltoken
+      volumes:
+        - name: config-volume
+          configMap:
+            name: view-config-json
+        - name: shared-storage
+          persistentVolumeClaim:
+            claimName: shared-pvc
