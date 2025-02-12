@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  view-config:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-02-12T10:33:01.241948088+05:30"
+    description: A Helm chart for Kubernetes
+    digest: 795f2583e7ce04da126f77b5145370884c047aac44baeea5312f7c24f063babe
+    name: view-config
+    type: application
+    urls:
+    - view-config-0.1.0.tgz
+    version: 0.1.0
+generated: "2025-02-12T10:33:01.239984201+05:30"
